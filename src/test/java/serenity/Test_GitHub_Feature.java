@@ -13,7 +13,7 @@ import org.junit.jupiter.api.Test;
 @SerenityTest
 public class Test_GitHub_Feature {
 
-    @DisplayName("This is for GitHub Test1")
+    @DisplayName("This is serenity way of providing details")
     @Test
     @Tag("tag1")
     public void testGitHubGetOneUserEndpoitTest(){
@@ -27,6 +27,11 @@ public class Test_GitHub_Feature {
                 .statusCode(200)
                // .log().all();
         ;
+       //this is serenity way we can generate custome report for validation steps
+        Ensure.that("Response was succesful ( instead of saying 200: )"
+                , response -> response.statusCode(200)
+        );
+
         Ensure.that("Test my GitHub Return the data1",
                 response -> response.body("login",is("CybertekSchool")));
 
